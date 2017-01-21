@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121065247) do
+ActiveRecord::Schema.define(version: 20170121185635) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",                    null: false
     t.string   "author",                   null: false
-    t.string   "editorial",                null: false
     t.string   "original_title"
     t.string   "translation"
     t.integer  "edition"
@@ -30,12 +29,17 @@ ActiveRecord::Schema.define(version: 20170121065247) do
     t.string   "cover_photo_content_type"
     t.integer  "cover_photo_file_size"
     t.datetime "cover_photo_updated_at"
+    t.integer  "editorial_id"
   end
 
   add_index "books", ["author"], name: "index_books_on_author"
   add_index "books", ["edition"], name: "index_books_on_edition"
-  add_index "books", ["editorial"], name: "index_books_on_editorial"
+  add_index "books", ["editorial_id"], name: "index_books_on_editorial_id"
   add_index "books", ["publication_year"], name: "index_books_on_publication_year"
+
+  create_table "editorials", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: "", null: false

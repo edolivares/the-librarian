@@ -10,7 +10,7 @@
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.author') %></dt>
     <dd style="margin-left: 550px;"><%=@book.author || '-' %></dd>
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.editorial') %></dt>
-    <dd style="margin-left: 550px;"><%=@book.editorial || '-' %></dd>
+    <dd style="margin-left: 550px;"><%=@book.editorial.name || '-' %></dd>
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.original_title') %></dt>
     <dd style="margin-left: 550px;"><%=@book.original_title || '-' %></dd>
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.translation') %></dt>
