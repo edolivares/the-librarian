@@ -4,15 +4,19 @@
          <h1 class="text-center">Actualizar libro</h1>
          <%= render 'form' %>
       </div>
-   </div>
-
-  
-      <div class="col-lg-12 col-sm-12">
-         <%= link_to books_path , class: "btn btn-primary" do %>
-            <i class="fa fa-arrow-left"></i> Volver al listado
-         <% end %>
-         <%= link_to @book , class: "btn btn-primary" do %>
-            <i class="fa fa-eye"></i> Ver información de libro
-         <% end %>
+      <div class="col-lg-6 col-sm-12 col-md-12 text-center">
+         <h1 class="text-center">Portada</h1>
+         <div style="margin-top: 30px;" >
+            <img class="responsive" height="180px" src="<%= @book.cover_photo.exists? ? @book.cover_photo : image_url('cover_default.jpeg') %>">
+         </div>
       </div>
+   </div>
+   <div class="col-lg-12 col-sm-12">
+      <%= link_to books_path , class: "btn btn-primary" do %>
+         <i class="fa fa-arrow-left"></i> Volver al listado
+      <% end %>
+      <%= link_to @book , class: "btn btn-primary" do %>
+         <i class="fa fa-eye"></i> Ver información de libro
+      <% end %>
+   </div>
 </div>

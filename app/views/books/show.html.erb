@@ -1,29 +1,32 @@
 <% content_for :title, "Ver libro: #{@book.title}" %>
 <div id="books_show">
-  <h1><%= yield :title %></h1>
-  <dl class="dl-horizontal">
-    <dt><%=t('activerecord.attributes.book.title') %></dt>
-    <dd><%=@book.title || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.author') %></dt>
-    <dd><%=@book.author || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.editorial') %></dt>
-    <dd><%=@book.editorial || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.original_title') %></dt>
-    <dd><%=@book.original_title || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.translation') %></dt>
-    <dd><%=@book.translation || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.edition') %></dt>
-    <dd><%=@book.edition || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.edition_date') %></dt>
-    <dd><%=if @book.edition_date.present? then l(@book.edition_date) else '-' end %></dd>
-    <dt><%=t('activerecord.attributes.book.edition_place') %></dt>
-    <dd><%=@book.edition_place || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.publication_year') %></dt>
-    <dd><%=@book.publication_year || '-' %></dd>
-    <dt><%=t('activerecord.attributes.book.isbn') %></dt>
-    <dd><%=@book.isbn || '-' %></dd>
+  <h1 class="text-center"><%= yield :title %></h1>
+  <div style="margin-top: 30px;" class="text-center" >
+            <img class="responsive" height="180px" src="<%= @book.cover_photo.exists? ? @book.cover_photo : image_url('cover_default.jpeg') %>">
+         </div>
+  <dl style="margin-top: 15px;" class="dl-horizontal text-left">
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.title') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.title || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.author') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.author || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.editorial') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.editorial || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.original_title') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.original_title || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.translation') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.translation || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.edition') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.edition || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.edition_date') %></dt>
+    <dd style="margin-left: 550px;"><%=if @book.edition_date.present? then l(@book.edition_date) else '-' end %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.edition_place') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.edition_place || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.publication_year') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.publication_year || '-' %></dd>
+    <dt style="width: 530px;"><%=t('activerecord.attributes.book.isbn') %></dt>
+    <dd style="margin-left: 550px;"><%=@book.isbn || '-' %></dd>
   </dl>
-  <div class="row">
+  <div class="row text-center">
     <div class="col-sm-offset-1 col-sm-11">      
       <%= link_to 'Editar', edit_book_path(@book), class: 'btn btn-primary' %>
       <%= link_to 'Volver', books_path, class: 'btn btn-default' %>
