@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require turbolinks
-//= require_tree .
+//= require bootstrap-sprockets
+//= require books
+//= require expandible-fake-table
+//= require home
+//= require boot
+// require twitter/bootstrap
+// require turbolinks
+// require_tree .
