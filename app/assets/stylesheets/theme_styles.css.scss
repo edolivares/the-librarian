@@ -18,8 +18,18 @@ h1 {
   white-space: nowrap;
 }
 
+.row:before, .row:after {
+    content: initial;
+    display: table;
+}
+
 .responsive-fake-table {
   margin-bottom: 20px;
+
+  > .row:before, .row:after {
+   content: initial;
+  }
+
   .col {
     border: 1px solid transparent;
     border-right: none;
@@ -28,14 +38,14 @@ h1 {
   .col:first-child {
     border-left: none;
   }
-  header .col {
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-    color: #31708f;
-    padding-top: 15px;
-    font-weight: bold;
-  }
-  section .col {
+   > div > table > thead .col {
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+      color: #31708f;
+      padding-top: 15px;
+      font-weight: bold;
+   }
+  > div > table .col {
     //color: #8a6d3b;
     background-color: #fcf8e3;
     border-color: #faebcc;
@@ -43,11 +53,38 @@ h1 {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  section:nth-child(odd) .col {
+  > div > table > tbody > tr:nth-child(odd) .col {
     background-color: #fff;
   }
   
 }
+
+#books_table {
+   .col {
+       border: 1px solid transparent;
+       border-right: none;
+       padding: 5px;
+   }
+   .col:first-child {
+      border-left: none;
+   }
+   .col.toggle {
+      cursor: pointer;
+   }
+   .col {
+    //color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  tbody > tr:nth-child(odd) .col {
+    background-color: #fff;
+  }
+}
+
+
 .expansible-fake-table {
   section .col.toggle {
     cursor: pointer;
