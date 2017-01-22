@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121213442) do
+ActiveRecord::Schema.define(version: 20170122033013) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20170121213442) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",                    null: false
-    t.string   "author",                   null: false
     t.string   "original_title"
     t.string   "translation"
     t.integer  "edition"
@@ -36,7 +35,6 @@ ActiveRecord::Schema.define(version: 20170121213442) do
     t.integer  "editorial_id"
   end
 
-  add_index "books", ["author"], name: "index_books_on_author"
   add_index "books", ["edition"], name: "index_books_on_edition"
   add_index "books", ["editorial_id"], name: "index_books_on_editorial_id"
   add_index "books", ["publication_year"], name: "index_books_on_publication_year"

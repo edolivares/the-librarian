@@ -8,7 +8,24 @@
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.title') %></dt>
     <dd style="margin-left: 550px;"><%=@book.title || '-' %></dd>
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.author') %></dt>
-    <dd style="margin-left: 550px;"><%=@book.author || '-' %></dd>
+    <dd style="margin-left: 550px;">
+      <% @author_count = @book.authors.pluck(:name).count;
+               @x=0;
+               @book.authors.pluck(:name).each do |author| 
+                  if @author_count==1 %>
+                     <%= author %>
+               <%  else
+                     if @x < @author_count-1 %>
+                     <%= author + ", " %>
+               <%    else %>
+                        <%= author %>
+               <%    end
+                  end
+                  @x=@x+1;
+            %>
+            <% end %>
+
+   </dd>
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.editorial') %></dt>
     <dd style="margin-left: 550px;"><%=@book.editorial.name || '-' %></dd>
     <dt style="width: 530px;"><%=t('activerecord.attributes.book.original_title') %></dt>
