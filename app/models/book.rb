@@ -22,11 +22,11 @@ class Book < ActiveRecord::Base
    # Se asume que la tabla Book es la primera, siendo editorial y autor siguientes a esta.
    # No dejarlas comentadas durante la migración inicial daría un AssociationTypeMismatch
   
-   belongs_to :editorial
-   has_many :registros
-   has_many :authors, through: :registros
-   has_attached_file :cover_photo, styles: { medium: "210x180>", thumb: "50x45>" }, default_url: "/images/:style/conver_photo.png"
-   validates_attachment_content_type :cover_photo, content_type: /\Aimage\/.*\z/
+   # belongs_to :editorial
+   # has_many :registros
+   # has_many :authors, through: :registros
+   # has_attached_file :cover_photo, styles: { medium: "210x180>", thumb: "50x45>" }, default_url: "/images/:style/conver_photo.png"
+   # validates_attachment_content_type :cover_photo, content_type: /\Aimage\/.*\z/
 
   validates :title, :author, :editorial, :presence => true
   validates :edition, :publication_year, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
