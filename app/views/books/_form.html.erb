@@ -21,7 +21,7 @@
    </div>
 
    <div class="form-group">
-      <%= f.input :author %>
+      <%= f.association :authors, include_blank: false, as: :check_boxes %>
    </div>
 
    <div class="form-group">

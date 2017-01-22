@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121185635) do
+ActiveRecord::Schema.define(version: 20170121213442) do
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "books", force: :cascade do |t|
     t.string   "title",                    null: false
@@ -40,6 +44,14 @@ ActiveRecord::Schema.define(version: 20170121185635) do
   create_table "editorials", force: :cascade do |t|
     t.string "name"
   end
+
+  create_table "registros", id: false, force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "author_id"
+  end
+
+  add_index "registros", ["author_id"], name: "index_registros_on_author_id"
+  add_index "registros", ["book_id"], name: "index_registros_on_book_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: "", null: false

@@ -20,7 +20,23 @@
             <img class="responsive" width="50px" src="<%= book.cover_photo.exists? ? book.cover_photo : image_url('cover_default.jpeg') %>"></img>
          </div>
           <div class="col col-xs-5 col-sm-4 col-md-3 h55 toggle"><%=book.title %></div>
-          <div class="col col-xs-4 col-sm-3 col-md-3 h55 toggle"><%=book.author%></div>
+         <div class="col col-xs-4 col-sm-3 col-md-3 h55 toggle">
+            <% @author_count = book.authors.pluck(:name).count;
+               @x=0;
+               book.authors.pluck(:name).each do |author| 
+                  if @author_count==1 %>
+                     <%= author %>
+               <%  else
+                     if @x < @author_count-1 %>
+                     <%= author + ", " %>
+               <%    else %>
+                        <%= author %>
+               <%    end
+                  end
+                  @x=@x+1;
+            %>
+            <% end %>
+         </div>
           <div class="col hidden-xs col-sm-3 col-md-2 h55 toggle"><%=book.editorial.name%></div>
           <div class="col hidden-xs hidden-sm col-md-2 h55 toggle"><%=book.edition%></div>
           <div class="col col-xs-2 col-sm-1 col-md-1 h55">
